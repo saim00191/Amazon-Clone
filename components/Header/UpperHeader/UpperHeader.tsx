@@ -14,13 +14,14 @@ import { useSelector } from "react-redux";
 import { app } from "@/firebse.config";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
+import {RootState} from "@/redux/store"
 
 const UpperHeader = () => {
   const auth = getAuth(app);
   const dispatch = useDispatch();
   const [showList, setShowList] = useState<boolean>(false);
-  const products = useSelector((state) => state.amazonReducer.products);
-  const userInfo = useSelector((state) => state.amazonReducer.userInformation);
+  const products = useSelector((state:RootState) => state.amazonReducer.products);
+  const userInfo = useSelector((state:RootState) => state.amazonReducer.userInformation);
 
   // Listen for authentication state changes
   useEffect(() => {

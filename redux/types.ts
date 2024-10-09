@@ -15,8 +15,8 @@ export interface Products {
 }
   
 export interface UserInformation {
-    name: string;
-    email: string;
+    name: string | null;
+    email: string | null;
 }
   
 export interface AmazonState {

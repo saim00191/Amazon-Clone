@@ -7,10 +7,11 @@ import { useState, useEffect } from 'react';
 import { deleteItem, incrementItem, decrementItem, setProducts } from '@/redux/Slice';
 import UpperHeader from '@/components/Header/UpperHeader/UpperHeader';
 import Footer from '@/components/Footer/Footer';
+import { RootState } from "@/redux/store";
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.amazonReducer.products);
+  const products = useSelector((state:RootState) => state.amazonReducer.products);
   const [totalAmount, setTotalAmount] = useState<number>(0);
 
   useEffect(() => {

@@ -8,10 +8,11 @@ import SideNav from "./SideNav";
 import { sideNavData, navItems } from "./Items";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { RootState } from "@/redux/store";
 
 const BottomHeader = () => {
   const [sideNavOpen, setSideNavOpen] = useState<boolean>(false);
-  const userInfo = useSelector((state) => state.amazonReducer.userInformation);
+  const userInfo = useSelector((state:RootState) => state.amazonReducer.userInformation);
 
   useEffect(() => {
     if (sideNavOpen) {
