@@ -29,6 +29,7 @@ const UpperHeader = () => {
       if (user) {
         // User is signed in, dispatch user info to Redux
         dispatch(setUserInfo({
+          id: user.uid, // Assuming uid is available
           name: user.displayName, // Assuming displayName is available
           email: user.email,
         }));

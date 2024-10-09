@@ -89,11 +89,10 @@ const SignIn: React.FC = () => {
           const user = userCredential.user;
           dispatch(
             setUserInfo({
-              id: user.uid,
-              userName: user.displayName,
-              email: user.email,
-              photoURL: user.photoURL,
-            })
+              id: user.uid || null,
+              name: user.displayName || null,
+              email: user.email || null,
+          })
           );
 
           setLoading(false);
