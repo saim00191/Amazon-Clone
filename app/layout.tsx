@@ -21,17 +21,15 @@ export const metadata = {
 
 interface RootLayoutProps {
   children: React.ReactNode;
-  hideHeaderFooter?: boolean;
 }
 
 export default function RootLayout({
   children,
-  hideHeaderFooter = false,
 }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ClientProvider> {/* Wrap your layout with ClientProvider */}
+        <ClientProvider> 
           {children}
         </ClientProvider>
       </body>

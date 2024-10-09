@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { FaHeart } from "react-icons/fa6";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { addToCart } from "@/redux/Slice";
+import Image from "next/image";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -45,10 +46,12 @@ const Products = () => {
               {item.category}
             </span>
             <div className="flex items-center justify-center p-4 relative">
-              <img
+              <Image
                 className="w-full h-48 object-contain"
                 src={item.image}
                 alt={item.title}
+                width={200}
+                height={200}
               />
               <ul className="h-36 w-full z-0 absolute flex flex-col items-end bg-gray-100 px-2 border-r border-1 bottom-[-150px] group-hover:bottom-4 transition-all duration-700">
                 <li className="productsli">

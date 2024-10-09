@@ -22,10 +22,10 @@ export default function Cart() {
   }, [dispatch]);
 
   useEffect(() => {
-    const Total = products.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    setTotalAmount(Total);
+    const total = products.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    setTotalAmount(total);
 
-    // Save cart items to local storage
+    // Save cart items to local storage whenever products change
     localStorage.setItem('cartItems', JSON.stringify(products));
   }, [products]);
 
@@ -94,7 +94,7 @@ export default function Cart() {
               )}
             </div>
           </div>
-          <div className="w-full h-52 py-3 px-5 bg-white rounded-lg md:col-span-5 lg:col-span-1 flex flex-col items-center justify-center ">
+          <div className="w-full h-52 py-3 px-5 bg-white rounded-lg md:col-span-5 lg:col-span-1 flex flex-col items-center justify-center">
             <div>
               <p className="flex items-start gap-2 text-sm">
                 <span className="mt-1 bg-white rounded-full text-green-500"><FaCircleCheck /></span>
