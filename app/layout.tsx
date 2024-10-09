@@ -1,8 +1,6 @@
 // app/layout.tsx
 import localFont from 'next/font/local';
 import './globals.css';
-import UpperHeader from '@/components/Header/UpperHeader/UpperHeader';
-import Footer from '@/components/Footer/Footer';
 import ClientProvider from '@/app/ClientProvider'
 
 const geistSans = localFont({

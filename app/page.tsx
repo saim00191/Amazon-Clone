@@ -3,7 +3,6 @@ import Products from '@/components/Products/Products'
 import React from 'react'
 import UpperHeader from '@/components/Header/UpperHeader/UpperHeader';
 import Footer from '@/components/Footer/Footer';
-import firebaseConfig from '@/firebse.config';
 
 const Home = () => {
   return (

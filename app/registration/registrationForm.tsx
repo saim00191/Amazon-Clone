@@ -309,7 +309,7 @@ const SignUp: React.FC = () => {
               )}
 
               <p className="text-[13px] text-black leading-4 mt-4 text-left">
-                By continuing, you agree to Amazon's{" "}
+                By continuing, you agree to Amazon&apos;s{" "}
                 <span className="text-blue-600 hover:text-orange-700 cursor-pointer hover:underline">
                   Conditions of Use
                 </span>{" "}

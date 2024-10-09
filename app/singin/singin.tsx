@@ -15,6 +15,7 @@ const SignIn: React.FC = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const auth = getAuth(app);
+  
   // State variables for email, password, and error messages
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -57,6 +58,7 @@ const SignIn: React.FC = () => {
     // Clear previous messages
     setErrEmail("");
     setErrPassword("");
+    setErrMessage("");
     setSuccessMsg("");
 
     // Validate email
@@ -84,7 +86,6 @@ const SignIn: React.FC = () => {
     if (emailValidation(email) && password) {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
           dispatch(
             setUserInfo({
@@ -97,17 +98,14 @@ const SignIn: React.FC = () => {
 
           setLoading(false);
           setSuccessMsg("Logged In Successfully!");
-          // Redirect after a short delay
           setTimeout(() => {
             router.push("/");
           }, 2000);
-          // ...
         })
         .catch((error) => {
           setLoading(false);
           const errorCode = error.code;
-          const errorMessage = error.message;
-          // Handle Errors here.
+
           if (errorCode === "auth/invalid-email") {
             setErrEmail("Invalid email");
           } else if (errorCode === "auth/wrong-password") {
@@ -118,6 +116,7 @@ const SignIn: React.FC = () => {
         });
     }
   };
+
   return (
     <div className="w-full min-h-screen flex flex-col">
       <div className="flex-grow bg-gray-100 flex flex-col items-center justify-center">
@@ -207,7 +206,7 @@ const SignIn: React.FC = () => {
                 </div>
               )}
               <p className="text-[13px] text-black leading-4 mt-4 text-left">
-                By continuing, you agree to Amazon's{" "}
+                By continuing, you agree to Amazon&apos;s{" "}
                 <span className="text-blue-600 hover:text-orange-700 cursor-pointer hover:underline">
                   Conditions of Use
                 </span>{" "}
