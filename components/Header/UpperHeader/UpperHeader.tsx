@@ -23,30 +23,28 @@ const UpperHeader = () => {
   const products = useSelector((state:RootState) => state.amazonReducer.products);
   const userInfo = useSelector((state:RootState) => state.amazonReducer.userInformation);
 
-  // Listen for authentication state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, dispatch user info to Redux
+       
         dispatch(setUserInfo({
-          id: user.uid, // Assuming uid is available
-          name: user.displayName, // Assuming displayName is available
+          id: user.uid, 
+          name: user.displayName,
           email: user.email,
         }));
       } else {
-        // User is signed out, clear user info from Redux
         dispatch(setSignOut()); 
       }
     });
 
-    // Cleanup subscription on unmount
+
     return () => unsubscribe();
   }, [dispatch, auth]);
 
   const logoutHandler = () => {
     signOut(auth)
       .then(() => {
-        dispatch(setSignOut()); // Clear user info on sign out
+        dispatch(setSignOut()); 
       })
       .catch(() => {
         console.log("An error occurred while signing out");
@@ -115,9 +113,9 @@ const UpperHeader = () => {
         {/* Sign in */}
         <Link href={"/singin"}>
           <div className="flex flex-col items-start justify-center px-2 py-1 h-[80%] cursor-pointer hover:border-white border-transparent border-2 transition duration-100">
-            {userInfo && userInfo.name
+            <p className="text-sm sm:text-[17px] md:text-xl">{userInfo && userInfo.name
               ? userInfo.name
-              : "Hello, sign in"}
+              : "Hello, sign in"}</p>
             <p className="hidden sml:flex font-bold text-white -mt-1 text-[17px] items-center gap-[2px]">
               Accounts & List{" "}
               <span>

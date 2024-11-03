@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Products, UserInformation, AmazonState } from "./types";
 
-// Retrieve user info from localStorage if available
-const storedUserInfo = localStorage.getItem("userInformation");
 const initialState: AmazonState = {
   products: [],
-  userInformation: storedUserInfo ? JSON.parse(storedUserInfo) : null,
+  userInformation: null, // Removed localStorage retrieval
 };
 
 export const amazonSlice = createSlice({
@@ -21,7 +19,6 @@ export const amazonSlice = createSlice({
         state.products.push(action.payload);
       }
     },
-    // Action to remove a product from the cart
     deleteItem: (state, action: PayloadAction<number>) => {
       state.products = state.products.filter(
         (item) => item.id !== action.payload
@@ -29,10 +26,7 @@ export const amazonSlice = createSlice({
     },
     setUserInfo: (state, action: PayloadAction<UserInformation>) => {
       state.userInformation = action.payload;
-      // Store user information in localStorage
-      localStorage.setItem("userInformation", JSON.stringify(action.payload));
     },
-    // Action to clear the cart
     clearCart: (state) => {
       state.products = [];
     },
@@ -50,8 +44,6 @@ export const amazonSlice = createSlice({
     },
     setSignOut: (state) => {
       state.userInformation = null;
-      // Remove user information from localStorage
-      localStorage.removeItem("userInformation");
     },
     setProducts: (state, action: PayloadAction<Products[]>) => {
       state.products = action.payload;
